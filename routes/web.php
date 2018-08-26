@@ -12,20 +12,25 @@
 */
 
 
-Route::get('/', function()
-{
+Route::get('/', function () {
     return View::make('pages.home');
 });
 
-Route::get('/overview', function()
-{
-    return View::make('pages.overview');
-})->middleware('auth');
+/*
+Route::get('signup', function () {
+    return View::make('pages.signup');
+})->name('signup');
+*/
 
-Route::get('/volunteerlist', function()
-{
+Route::resource('signup', 'SignUpController');
+
+Route::get('overview', function () {
+    return View::make('pages.overview');
+})->middleware('auth')->name('overview');
+
+Route::get('volunteerlist', function () {
     return View::make('pages.volunteerlist');
-});
+})->middleware('auth')->name('list');
 
 Route::resource('people', 'PersonController');
 

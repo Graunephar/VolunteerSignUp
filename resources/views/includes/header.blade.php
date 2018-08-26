@@ -18,23 +18,29 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
+
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('signup.create') }}">{{ __('Sign Up') }}</a>
+                </li>
+
+                <li class="nav-item {{ Request::is('/login') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
+
                 @else
 
                     <div class="navbar-collapse">
 
                         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                            <a class="nav-link" id="#" href="/home">{{ __('Home') }}</a>
+                            <a class="nav-link" id="#" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
 
                         <li class="nav-item {{ Request::is('overview') ? 'active' : '' }}">
-                            <a class="nav-link" id="#" href="/overview">{{ __('Overview') }}</a>
+                            <a class="nav-link" id="#" href="{{ route('overview') }}">{{ __('Overview') }}</a>
                         </li>
 
                         <li class="nav-item {{ Request::is('volunteerlist') ? 'active' : '' }}">
-                            <a class="nav-link" id="#" href="/volunteerlist">{{ __('Volunteer List') }}</a>
+                            <a class="nav-link" id="#" href="{{ route('list') }}">{{ __('Volunteer List') }}</a>
                         </li>
                         <li class="nav-item {{ Request::is('register') ? 'active' : '' }}">
                             <a class="nav-link" class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
