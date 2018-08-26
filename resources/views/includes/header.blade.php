@@ -20,7 +20,7 @@
                 @guest
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('signup.create') }}">{{ __('Sign Up') }}</a>
+                    <a class="nav-link" href="{{ route('volunteer.signup') }}">{{ __('Sign Up') }}</a>
                 </li>
 
                 <li class="nav-item {{ Request::is('/login') ? 'active' : '' }}">

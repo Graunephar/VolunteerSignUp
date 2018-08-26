@@ -22,7 +22,9 @@ Route::get('signup', function () {
 })->name('signup');
 */
 
-Route::resource('signup', 'SignUpController');
+Route::resource('volunteer', 'VolunteerController')->names([
+    'create' => 'volunteer.signup'
+]);
 
 Route::get('overview', function () {
     return View::make('pages.overview');
