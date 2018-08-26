@@ -11,12 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', function()
+{
+    return View::make('pages.home');
+});
+
+Route::get('/overview', function()
+{
+    return View::make('pages.overview');
+})->middleware('auth');
+
+Route::get('/volunteerlist', function()
+{
+    return View::make('pages.volunteerlist');
 });
 
 Route::resource('people', 'PersonController');
-
 
 Auth::routes();
 
