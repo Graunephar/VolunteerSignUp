@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace VolunteerSignUp;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace VolunteerSignUp\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Person;
+use VolunteerSignUp\Person;
 
 class PersonController extends Controller
 {
