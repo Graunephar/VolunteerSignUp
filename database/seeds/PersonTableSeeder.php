@@ -17,7 +17,8 @@ class PersonTableSeeder extends Seeder
             'email' => str_random(10).'@gmail.com',
             'group' => 'FDF Testkreds',
             'id' => rand(1, 100),
-            'created_at_timestamp' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'timeslots' => '{ "model": "car" }',
             'comments' => 'Blah',
             'phone' => '88888888'

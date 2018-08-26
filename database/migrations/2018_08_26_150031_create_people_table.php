@@ -15,14 +15,13 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('created_at_timestamp');
             $table->json('timeslots');
             $table->string('email');
             $table->string('name', 100);
             $table->longText('comments');
             $table->string('group', 100);
             $table->string('phone', 50);
-
+            $table->timestamps();
         });
     }
 
