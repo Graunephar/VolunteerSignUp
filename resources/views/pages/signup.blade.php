@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('content')
 
+
+    @foreach ($errors->all() as $message)
+
+        <div class="alert alert-warning" role="alert">
+            {{ $message }}
+        </div>
+
+    @endforeach
+
+
+    @if(session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+
+    @endif
+
+
     {{ Form::open(array('action' => 'VolunteerController@store')) }}
     @csrf
 
@@ -18,6 +36,8 @@
 
     {{ Form::label('comments', 'Evt kommentarer') }}
     {{ Form::textarea('comments')}}}}
+
+    //Timeslots her
 
     {{ Form::submit('Gem') }};
 

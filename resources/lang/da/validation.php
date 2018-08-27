@@ -125,7 +125,10 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'email' => 'Angiv venligst din email',
+            'name' => 'Skriv venligst dit navn',
+            'group' => 'Angiv venligst din gruppe/kreds',
+            'phone' => 'Du har angivet et ugyldigt telefonnummer'
         ],
     ],
 
@@ -141,5 +144,9 @@ return [
     */
 
     'attributes' => [
+        'name' => 'navn',
+        'phone' => 'telefonnummer',
+        'email' => 'email adresse',
+        'group' => 'gruppe/kreds'
     ],
 ];

@@ -101,7 +101,10 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'email' => 'Please add an email',
+            'name' => 'Please provide your name',
+            'group' => 'Please add your gruppe/kreds',
+            'phone' => 'not a valid phone number'
         ],
     ],
 
@@ -116,6 +119,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'name',
+        'phone' => 'phone number',
+        'email' => 'email address',
+        'group' => 'gruppe/kreds'
+    ],
 
 ];
