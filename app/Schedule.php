@@ -47,15 +47,15 @@ class Schedule extends Model
     public function getTimeList()
     {
 
-        $days = [];
-
+        $resarray = [];
+        $i = 1;
         foreach ($this->days as $day) {
-
 
             $timeslots = [];
             $current = $day->getStartTime();
             $end = $day->getEndTime();
             $day_of_week = $current->dayOfWeek; // save date of week as it might change later
+            $date = $current->toDateString();
             while (true) {
                 $res = $current->toTimeString(); //eg 15:00
                 $res = $res . ' - '; //eg 15:00 -
@@ -83,9 +83,14 @@ class Schedule extends Model
             // TODO: Add remaining time in day that is lesser than remaining interval
             //https://stackoverflow.com/questions/33575239/carbon-difference-in-time-between-two-dates-in-hhmmss-format
 
-            $days[$day_of_week] = $timeslots; //Save timeslot list as array
+            $times['times'] = $timeslots; //Save timeslot list as array
+            $datear['date'] = $date;
+            $weekday['weekday'] = $day_of_week;
+            $resarray[$i] = [$times, $datear, $weekday];
+            $i++;
+
         }
 
-        return $days;
+        return $resarray;
     }
 }
