@@ -6,7 +6,7 @@ use Faker\Provider\nl_BE\Person;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-
+use VolunteerSignUp\Http\Controllers\EmailController;
 
 
 class VolunteerController extends Controller
@@ -44,7 +44,27 @@ class VolunteerController extends Controller
         $person->group = $request->group;
 
         $person->comments = $request->comments;
-        $person->id = $this->create_hash($request->name, $request->email);
+        $person->hash = $this->create_hash($request->name, $request->email);
+
+
+        $firstnight = $request->firstnight;
+        $secondnight= $request->secondnight;
+
+        if ($firstnight === NULL) {
+            $firstnight = false;
+        }
+
+        if ($secondnight === NULL) {
+            $secondnight = false;
+        }
+
+        $person->firstnight = $firstnight;
+        $person->secondnight = $secondnight;
+
+
+            error_log('Lol HASH: ' . $person->hash);
+        error_log('Lol ID: ' . $person->id);
+
 
         $person->timeslots = '{ "model": "car" }';
 
@@ -58,7 +78,12 @@ class VolunteerController extends Controller
 
         $person->save();
 
-        return redirect()->back()->with('message', 'Dine oplysninger er blevet gemt. Vi har sendt dig en email med yderligere informationer.');
+
+        $mail = new EmailController();
+        $mail->sendEmail($person);
+
+
+        return redirect()->back()->with('message', __('messages.success_message'));
 
     }
 
@@ -68,6 +93,8 @@ class VolunteerController extends Controller
         $a = Hash::make($name);
         $b = Hash::make($email);
 
-        return $a . "|" . strlen($a) . "|" . $b . "|" . strlen($b);
+        $res = Hash::make($a . "|" . strlen($a) . "|" . $b . "|" . strlen($b));
+
+        return $res;
     }
 }
