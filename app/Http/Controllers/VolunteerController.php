@@ -62,8 +62,6 @@ class VolunteerController extends Controller
         $person->secondnight = $secondnight;
 
 
-            error_log('Lol HASH: ' . $person->hash);
-        error_log('Lol ID: ' . $person->id);
 
 
         $person->timeslots = '{ "model": "car" }';
