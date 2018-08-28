@@ -61,9 +61,6 @@ class VolunteerController extends Controller
         $person->firstnight = $firstnight;
         $person->secondnight = $secondnight;
 
-
-
-
         $person->timeslots = '{ "model": "car" }';
 
         $comments = $request->comments;

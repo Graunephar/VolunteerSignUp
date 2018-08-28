@@ -1,7 +1,20 @@
 @extends('layouts.app')
 @section('content')
 
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 
+
+    <script type="text/javascript">
+
+        $('#signupform').submit(function (e) {
+            e.preventDefault();
+            window.alert("sometext");
+        })
+
+    </script>
     @foreach ($errors->all() as $message)
 
         <div class="alert alert-warning" role="alert">
@@ -17,7 +30,7 @@
         </div>
     @else
 
-        {{ Form::open(array('action' => 'VolunteerController@store')) }}
+        {{ Form::open(array('action' => 'VolunteerController@store', 'id' => 'signupform')) }}
         @csrf
 
         {{ Form::label('name', 'Navn') }}
@@ -38,7 +51,6 @@
         {{ Form::label('firstnight', 'Har du mulighed for at tage nattevagt fra 22:00 - 02:00?') }}
         {{ Form::checkbox('firstnight')}}}}
 
-
         {{ Form::label('secondnight', 'Har du mulighed for at tage nattevagt fra 22:00 - 02:00?') }}
         {{ Form::checkbox('secondnight')}}}}
 
@@ -50,5 +62,6 @@
 
 
     @endif
+
 
 @stop
